@@ -58,10 +58,11 @@
                     <div class="col-12">
                         <div class="float-end">
                             <a href="${pageContext.request.contextPath}/app${Volver}" class="btn btn-secondary">Volver atrás</a>
-                            <button type="submit" class="btn btn-warning">Confirmar cambios</button>
+                            <button type="submit" class="btn btn-warning">Confirmar cambios</button>                
                         </div>
-                    </div>
-                </div>
+                    </div>       
+                </div>  
+                <p class="text-center m-5"><small>* El boton -Volver Atras- regresa a la pantalla del alumno, o al listado, dependiendo desde donde se ingreso.</small></p>                        
             </form>
         </div>
     </div>

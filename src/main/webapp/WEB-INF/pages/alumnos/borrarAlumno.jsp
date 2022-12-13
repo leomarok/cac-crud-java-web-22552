@@ -21,7 +21,7 @@
                     </jsp:include>
                 </div>
             </div>
-            <div class="col-sm-5 col-md-6 col-lg-4">
+            <div class="col-sm-7 col-md-6 col-lg-4">
                 <form action="${pageContext.request.contextPath}/app?accion=delete&id=${alumnoABorrar.id}"
                       method="post" class="was-validated border p-2 rounded-3 bg-light">
                     <div class="row text-center">
@@ -33,6 +33,7 @@
                             <button type="submit" class="btn btn-danger">Sí, borrar</button>
                         </div>
                     </div>
+                    <p class="text-center m-5"><small>* El boton -Mejor No- regresa a la pantalla del alumno, o al listado, dependiendo desde donde se ingreso.</small></p>                        
                 </form>
             </div>
         </div>
