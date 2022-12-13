@@ -4,7 +4,7 @@
             Realizado por
             <a class="text-warning" target="_blank" href="https://www.youtube.com/c/CharlyCimino"> 
                 Prof. Carlos Cimino</a> - Modificado por Leonardo Larrosa - 
-                Copyright &copy; <%= java.time.LocalDate.now().getYear()  %>
+                Copyright &copy; <%= java.time.LocalDate.now().getYear() %>
         </p>
     </div>
 </footer>
