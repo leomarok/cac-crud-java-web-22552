@@ -37,10 +37,12 @@ public class AppServlet extends HttpServlet {
         String laAccion = req.getParameter("accion");
         String idStr = req.getParameter("id");
         String volver = req.getParameter("volver");
+        String nuevoid = req.getParameter("nuevoid");
 
         int id = (idStr == null ? -1 : Integer.parseInt(idStr));
         laAccion = (laAccion == null ? "" : laAccion);
         volver = (volver == null ? "" : volver);
+        nuevoid = (nuevoid == null ? "" : nuevoid);
  
         switch (volver) {
             case "visualizar":
@@ -69,6 +71,7 @@ public class AppServlet extends HttpServlet {
                 break;    
             default:
                 req.setAttribute("listaAlumnos", model.getAlumnos());
+                req.setAttribute("nuevoid", nuevoid);
                 req.getRequestDispatcher(URI_LIST).forward(req, resp);
         }
 
@@ -97,7 +100,7 @@ public class AppServlet extends HttpServlet {
                 model.addAlumno(aluAgregar);
                 break;          
         }
-        resp.sendRedirect(getServletContext().getContextPath() + "/app");
+        resp.sendRedirect(getServletContext().getContextPath() + "/app?nuevoid=43");
     }
     
     private void cargarAlumnoSegunParams(Alumno a, HttpServletRequest request) {

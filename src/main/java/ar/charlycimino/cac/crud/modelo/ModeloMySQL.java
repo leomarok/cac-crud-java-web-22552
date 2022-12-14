@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class ModeloMySQL implements Modelo {
     
-    private static final String GET_ALL_QUERY = "SELECT * FROM alumnos";
+    private static final String GET_ALL_QUERY = "SELECT * FROM alumnos ORDER BY nombre";
     private static final String GET_BY_ID_QUERY = "SELECT * FROM alumnos WHERE id = ?";
     
     @Override

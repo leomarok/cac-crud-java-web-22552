@@ -1,6 +1,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:forEach items="${listaAlumnos}" var="alumno">  
     <div class="col">
+        <jsp:include page="flagAlumno.jsp">
+            <jsp:param name="IdAlumno" value="${alumno.id}" />
+        </jsp:include>   
         <div class="card h-100">
             <jsp:include page="dataCardAlumno.jsp">
                 <jsp:param name="fotoAlumno" value="${alumno.foto}" />
