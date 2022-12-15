@@ -11,7 +11,7 @@ import java.time.format.DateTimeParseException;
  * https://www.youtube.com/c/CharlyCimino Encontrá más código en mi repo de
  * GitHub: https://github.com/CharlyCimino
  */
-public class Alumno {
+public class Alumno implements Comparable<Alumno> {
 
     private int id;
     private String nombre;
@@ -133,4 +133,21 @@ public class Alumno {
         return "Alumno{" + "id=" + id + ", apellido=" + apellido + ", nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + ", foto=" + foto + '}';
     }
 
+
+    @Override
+    public int compareTo(Alumno o) {
+
+        if (this.getNombre().compareTo(o.nombre) < 0) {
+            return -1;
+        } else if (this.getNombre().compareTo(o. nombre) > 0) {  
+
+        return 1;
+        }
+        else {
+            return 0;   
+        }
+        
+    }
+ 
+    
 }

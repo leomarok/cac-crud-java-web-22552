@@ -6,6 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -16,11 +19,11 @@ import java.util.List;
  */
 public class ModeloMySQL implements Modelo {
     
-    private static final String GET_ALL_QUERY = "SELECT * FROM alumnos ORDER BY nombre";
+    private static final String GET_ALL_QUERY = "SELECT * FROM alumnos";
     private static final String GET_BY_ID_QUERY = "SELECT * FROM alumnos WHERE id = ?";
     
     @Override
-    public List<Alumno> getAlumnos() {
+    public List<Alumno> getAlumnos(String ListOrderby) {
         List<Alumno> lista = new ArrayList<>();
         
         try (Connection con = Conexion.getConnection();  
@@ -35,7 +38,17 @@ public class ModeloMySQL implements Modelo {
         } catch (Exception ex) {
             throw new RuntimeException("Error al obtener lista de alumnos", ex);
         }       
-        return lista;
+        
+        switch (ListOrderby) {
+            case "nombre":
+                Collections.sort(lista);
+//                Arrays.sort(lista);
+                break;
+            case "apellido":
+                break;
+            default:
+        }
+         return lista;
     }
 
     @Override

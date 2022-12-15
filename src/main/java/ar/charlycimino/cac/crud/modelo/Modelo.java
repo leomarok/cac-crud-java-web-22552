@@ -12,9 +12,11 @@ import java.util.List;
 public interface Modelo {
     /**
      * Devuelve una lista de alumnos existentes
+     * El Parametro order by indica si se ordenara por Nombre o Apellido
+     * @param ListOrderby
      * @return 
      */
-    public List<Alumno> getAlumnos();
+    public List<Alumno> getAlumnos(String ListOrderby);
     
     /**
      * Retorna un alumno por ID

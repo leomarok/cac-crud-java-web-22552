@@ -15,6 +15,7 @@
             <a href="#" class="btn btn-success"
                data-bs-toggle="modal" data-bs-target="#modalAgregarAlumno"><i class="bi bi-person-add"></i>
                 Agregar alumno</a>
+              <a href="${pageContext.request.contextPath}/app?listOrderBy=nombre" class="btn btn-primary bi bi-sort-alpha-down" >  Nombre</a>
         </div>
     </div>
     <hr/>

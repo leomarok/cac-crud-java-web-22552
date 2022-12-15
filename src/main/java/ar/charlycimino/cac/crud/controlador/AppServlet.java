@@ -2,7 +2,6 @@ package ar.charlycimino.cac.crud.controlador;
 
 import ar.charlycimino.cac.crud.modelo.Alumno;
 import ar.charlycimino.cac.crud.modelo.Modelo;
-import ar.charlycimino.cac.crud.modelo.ModeloHC;
 import ar.charlycimino.cac.crud.modelo.ModeloMySQL;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -31,18 +30,22 @@ public class AppServlet extends HttpServlet {
     public void init() throws ServletException {
         this.model = new ModeloMySQL();
     }
-
+   
+    
+    
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String laAccion = req.getParameter("accion");
         String idStr = req.getParameter("id");
         String volver = req.getParameter("volver");
         String nuevoid = req.getParameter("nuevoid");
+        String listOrderBy = req.getParameter("listOrderBy");
 
         int id = (idStr == null ? -1 : Integer.parseInt(idStr));
         laAccion = (laAccion == null ? "" : laAccion);
         volver = (volver == null ? "" : volver);
         nuevoid = (nuevoid == null ? "" : nuevoid);
+        listOrderBy = (listOrderBy == null ? "" : listOrderBy);
  
         switch (volver) {
             case "visualizar":
@@ -68,9 +71,9 @@ public class AppServlet extends HttpServlet {
                 req.setAttribute("alumnoAVisualizar", verAlu);
                 req.setAttribute("yaTieneFoto", !verAlu.getFoto().contains("no-face"));
                 req.getRequestDispatcher(URI_VISUALIZAR).forward(req, resp);
-                break;    
+                break;      
             default:
-                req.setAttribute("listaAlumnos", model.getAlumnos());
+                req.setAttribute("listaAlumnos", model.getAlumnos(listOrderBy));
                 req.setAttribute("nuevoid", nuevoid);
                 req.getRequestDispatcher(URI_LIST).forward(req, resp);
         }
