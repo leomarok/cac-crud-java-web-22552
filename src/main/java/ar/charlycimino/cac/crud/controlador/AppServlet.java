@@ -31,8 +31,6 @@ public class AppServlet extends HttpServlet {
         this.model = new ModeloMySQL();
     }
    
-    
-    
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String laAccion = req.getParameter("accion");
@@ -84,6 +82,7 @@ public class AppServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String laAccion = req.getParameter("accion");
         String idStr = req.getParameter("id");
+        int idGenerado = 0;
 
         int id = (idStr == null ? -1 : Integer.parseInt(idStr));
         laAccion = (laAccion == null ? "" : laAccion);
@@ -100,10 +99,13 @@ public class AppServlet extends HttpServlet {
             case "add":
                 Alumno aluAgregar = new Alumno();
                 cargarAlumnoSegunParams(aluAgregar, req);
-                model.addAlumno(aluAgregar);
+                idGenerado = model.addAlumno(aluAgregar);
+                System.out.println(idGenerado);
                 break;          
+          
         }
-        resp.sendRedirect(getServletContext().getContextPath() + "/app?nuevoid=43");
+        System.out.println(idGenerado);
+        resp.sendRedirect(getServletContext().getContextPath() + "/app?nuevoid=" + idGenerado);
     }
     
     private void cargarAlumnoSegunParams(Alumno a, HttpServletRequest request) {
