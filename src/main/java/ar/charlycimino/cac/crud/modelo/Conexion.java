@@ -27,7 +27,7 @@ public class Conexion {
     public static DataSource getDataSource() {
         if (dataSource == null) {
             try {
-//               Class.forName("com.mysql.jdbc.Driver");
+                Class.forName("com.mysql.jdbc.Driver");
                 dataSource = new BasicDataSource();
                 dataSource.setUrl(URL_DB);
                 dataSource.setInitialSize(50);
